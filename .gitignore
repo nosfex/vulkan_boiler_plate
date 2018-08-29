@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+vulkan/vulkan.VC.db
+vulkan/.vs/
+vulkan/vulkan/x64/
+vulkan/x64/
