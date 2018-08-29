@@ -2,25 +2,13 @@
 #include <GLFW/glfw3.h>
 #include <vulkan/vulkan.h>
 #include <iostream>
-
+#include "app/VulkanApplication.h"
 int main()
 {
-	glfwInit();
-	glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-	GLFWwindow* window = glfwCreateWindow(800, 600, "Vulkan Window", nullptr, nullptr);
-	uint32_t extensionCount = 0; 
-	vkEnumerateInstanceExtensionProperties(nullptr, &extensionCount, nullptr);
-
-	std::cout << extensionCount << " extensions supported" << std::endl;
-
-	while (!glfwWindowShouldClose(window)) 
-	{
-		glfwPollEvents();
-	}
-
-	glfwDestroyWindow(window);
-
-	glfwTerminate();
-
+	VulkanApplication* vkApp = new VulkanApplication();
+	
+	vkApp->Start();
+	vkApp->Loop();
+	vkApp->Cleanup();
 	return 0;
 }
