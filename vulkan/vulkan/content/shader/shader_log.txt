@@ -1,0 +1,10 @@
+shader.frag
+ERROR: #version: ES shaders for Vulkan SPIR-V require version 310 or higher
+ERROR: shader.frag:1: 'float' : type requires declaration of default precision qualifier 
+ERROR: shader.frag:1: '' : compilation terminated 
+ERROR: 3 compilation errors.  No code generated.
+
+
+ERROR: Linking fragment stage: Missing entry point: Each stage requires one entry point
+
+SPIR-V is not generated for failed compile or link
