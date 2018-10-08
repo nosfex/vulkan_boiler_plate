@@ -22,7 +22,7 @@
     <ProjectGuid>{FA21D31A-24E4-41B6-A09F-5319393B1F65}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>vulkan</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -74,9 +74,10 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>E:\docs\projects\C++\vulkan_boiler_plate\vulkan\vulkan\include;$(SolutionDir)\vulkan\include;$(SolutionDir)\vulkan\vulkan_libs\glfw\include;C:\VulkanSDK\1.1.82.1\Include;$(IncludePath)</IncludePath>
+    <IncludePath>E:\docs\projects\C++\vulkan_boiler_plate\vulkan\vulkan\include;$(SolutionDir)\vulkan\vulkan_libs\;$(SolutionDir)\vulkan\include;$(SolutionDir)\vulkan\vulkan_libs\glfw\include;C:\VulkanSDK\1.1.82.1\Include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\VulkanSDK\1.1.82.1\Lib;$(SolutionDir)\vulkan\vulkan_libs\glfw\lib-vc2015;$(LibraryPath)</LibraryPath>
     <SourcePath>E:\docs\projects\C++\vulkan_boiler_plate\vulkan\vulkan\source;$(SolutionDir)\source;$(SourcePath)</SourcePath>
+    <CustomBuildBeforeTargets>BuildCompile</CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -86,6 +87,7 @@
     <LibraryPath>$(SolutionDir)\vulkan\vulkan_libs\glfw\lib-vc2015;$(LibraryPath)</LibraryPath>
     <IncludePath>E:\docs\projects\C++\vulkan_boiler_plate\vulkan\vulkan\include;$(SolutionDir)\vulkan\include;$(SolutionDir)\vulkan\vulkan_libs\glfw\include;C:\VulkanSDK\1.0.65.1\Include;$(IncludePath)</IncludePath>
     <SourcePath>E:\docs\projects\C++\vulkan_boiler_plate\vulkan\vulkan\source;$(SolutionDir)\source;$(SourcePath)</SourcePath>
+    <CustomBuildBeforeTargets>BuildCompile</CustomBuildBeforeTargets>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -112,8 +114,14 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>glfw3.lib;glfw3dll.lib;vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)\vulkan\vulkan_libs\glfw\lib-vc2015;C:\VulkanSDK\1.0.65.1\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\vulkan\vulkan_libs\glfw\lib-vc2015;C:\VulkanSDK\1.1.82.1\Lib;C:\VulkanSDK\1.0.65.1\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <CustomBuildStep>
+      <Command>call $(ProjectDir)content\shader\compile_shader.bat</Command>
+      <TreatOutputAsContent>true</TreatOutputAsContent>
+      <Outputs>sarasa;%(Outputs)</Outputs>
+      <Inputs>$(ProjectDir)content\shader\compile_shader.bat;$(ProjectDir)content\shader\shader.frag;$(ProjectDir)content\shader\shader.vert</Inputs>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -150,13 +158,28 @@
       <AdditionalDependencies>glfw3.lib;glfw3dll.lib;vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)\vulkan\vulkan_libs\glfw\lib-vc2015;C:\VulkanSDK\1.0.65.1\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <CustomBuildStep>
+      <Command>call $(ProjectDir)content\shader\compile_shader.bat</Command>
+      <TreatOutputAsContent>true</TreatOutputAsContent>
+      <Outputs>sarasa;%(Outputs)</Outputs>
+      <Inputs>$(ProjectDir)content\shader\compile_shader.bat;$(ProjectDir)content\shader\shader.frag;$(ProjectDir)content\shader\shader.vert</Inputs>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\app\FileHelper.cpp" />
     <ClCompile Include="source\app\VulkanApplication.cpp" />
     <ClCompile Include="source\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\app\FileHelper.h" />
     <ClInclude Include="include\app\VulkanApplication.h" />
+    <ClInclude Include="include\geom\Indices.h" />
+    <ClInclude Include="include\geom\Vertex.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="content\shader\compile_shader.bat" />
+    <None Include="content\shader\shader.frag" />
+    <None Include="content\shader\shader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

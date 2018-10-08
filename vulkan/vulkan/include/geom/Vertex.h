@@ -32,7 +32,7 @@ namespace geom
 
 			attributeDescriptions[1].binding = 0;
 			attributeDescriptions[1].location = 1;
-			attributeDescriptions[1].format = VK_FORMAT_R32G32_SFLOAT;
+			attributeDescriptions[1].format = VK_FORMAT_R32G32B32_SFLOAT;
 			attributeDescriptions[1].offset = offsetof(Vertex, color);
 
 			return attributeDescriptions;
@@ -42,9 +42,11 @@ namespace geom
 		{
 			std::vector<Vertex> vertices =
 			{	// X      Y       R     G     B
-				{{0.0f, -0.5f},{1.0f, 1.0f, 1.0f}},
-				{{0.5f, 0.5f},{0.0f, 1.0f, 0.0f}},
-				{{-0.5f, 0.5f},{0.0f, 0.0f, 1.0f}}
+				{{-0.125f, -0.5f},{1.0f, 0.0f, 0.0f}},
+				{{0.25f, -0.5f},{0.0f, 1.0f, 0.0f}},
+				{{0.25f, 0.5f},{0.0f, 0.0f, 1.0f}},
+				{{-0.25f, 0.5f},{1.0f, 1.0f, 1.0f}}/*,
+				{ {-0.125f, 0.25f},{1.0f, 1.0f, 1.0f}}*/
 			};
 			return vertices;
 		}

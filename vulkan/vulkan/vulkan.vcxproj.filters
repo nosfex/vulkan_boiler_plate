@@ -19,6 +19,18 @@
     <Filter Include="source\app">
       <UniqueIdentifier>{31c8dceb-a2a0-43f6-a6aa-bb196932c019}</UniqueIdentifier>
     </Filter>
+    <Filter Include="content">
+      <UniqueIdentifier>{4d306f26-6071-4eb7-9664-871107e33f30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="content\shader">
+      <UniqueIdentifier>{e1460ccd-6a40-4fc1-9e52-ee4def01d2f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\geom">
+      <UniqueIdentifier>{aa2eeaa2-2af8-4bdd-ad6b-2511308f2779}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\geom">
+      <UniqueIdentifier>{4684221f-eaf3-40e1-8e5a-59da881c6028}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -27,10 +39,33 @@
     <ClCompile Include="source\app\VulkanApplication.cpp">
       <Filter>source\app</Filter>
     </ClCompile>
+    <ClCompile Include="source\app\FileHelper.cpp">
+      <Filter>source\app</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\app\VulkanApplication.h">
       <Filter>include\app</Filter>
     </ClInclude>
+    <ClInclude Include="include\app\FileHelper.h">
+      <Filter>include\app</Filter>
+    </ClInclude>
+    <ClInclude Include="include\geom\Vertex.h">
+      <Filter>include\geom</Filter>
+    </ClInclude>
+    <ClInclude Include="include\geom\Indices.h">
+      <Filter>include\geom</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="content\shader\shader.frag">
+      <Filter>content\shader</Filter>
+    </None>
+    <None Include="content\shader\shader.vert">
+      <Filter>content\shader</Filter>
+    </None>
+    <None Include="content\shader\compile_shader.bat">
+      <Filter>content\shader</Filter>
+    </None>
   </ItemGroup>
 </Project>
