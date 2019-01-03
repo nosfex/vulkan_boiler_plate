@@ -33,7 +33,7 @@
 #include "geom/Vertex.h"
 #include <glm/gtc/matrix_transform.hpp>
 #include <chrono>
-using namespace geom
+using namespace geom;
 //-----------------------------------------------------------------------------
 struct QueueFamilyIndices
 {

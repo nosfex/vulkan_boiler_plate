@@ -654,7 +654,7 @@ void VulkanApplication::CreateGraphicsPipeline()
 	VkPipelineLayoutCreateInfo pipelineLayoutInfo = {};
 	pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
 	pipelineLayoutInfo.setLayoutCount = 1;
-	pipelineLayoutInfo.pushConstantRangeCount = &VKDescriptorSetLayout;
+	pipelineLayoutInfo.pSetLayouts = &VKDescriptorSetLayout;
 
 	if (vkCreatePipelineLayout(VKDevice, &pipelineLayoutInfo, nullptr, &VKPipelineLayout) != VK_SUCCESS)
 	{
@@ -1083,7 +1083,7 @@ void VulkanApplication::UpdateUniformBuffer(uint32_t currentImage)
 	ubo.proj[1][1] *= -1;
 
 	void* data;
-	vkMapMemory(VKDevice, VKUniformBuffersMemory[currentImage], 0, sizeof(ubo), 0 & data);
+	vkMapMemory(VKDevice, VKUniformBuffersMemory[currentImage], 0, sizeof(ubo), 0, &data);
 	memcpy(data, &ubo, sizeof(ubo));
 	vkUnmapMemory(VKDevice, VKUniformBuffersMemory[currentImage]);
 }
